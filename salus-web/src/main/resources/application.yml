@@ -1,0 +1,66 @@
+server:
+  port:
+
+salus:
+  email:
+    timeunit: SECONDS
+    timeout: 300
+    refresh: 60
+    subject:
+    from:
+  sms:
+    secretId:
+    secretKey:
+    appId:
+    signName:
+    templateId:
+  cos:
+    SecretId:
+    SecretKey:
+    region:
+    url:
+    bucketName:
+  map:
+    key:
+    poi:
+    radius:
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+  data:
+    redis:
+      host: franky.pro
+      password:
+      port: 6379
+  mail:
+    host:
+    username:
+    password:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      logic-delete-field: exist
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  file:
+    name: server.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+      max-history: 2
+      file-name-pattern: server.%d{yyyy-MM-dd}.%i.log
