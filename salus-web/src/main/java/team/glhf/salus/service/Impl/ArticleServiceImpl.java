@@ -152,7 +152,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                 .groupBy("tag")
                 .orderByDesc("count(tag)")
         );
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5 && i < tagNameList.size(); i++) {
             long hot = 0L;
             String image = null;
             String tag = tagNameList.get(i).toString();

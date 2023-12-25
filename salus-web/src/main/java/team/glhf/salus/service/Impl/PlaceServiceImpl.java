@@ -53,7 +53,7 @@ public class PlaceServiceImpl extends ServiceImpl<PlaceMapper, Place> implements
     @Override
     public CreateRes createPlace(CreateReq createReq) {
         Place place = Place.builder().build();
-        BeanUtil.copyProperties(createReq, place, "images", "setCityCode");
+        BeanUtil.copyProperties(createReq, place, "images");
         // 更新位置并上传图片
         LocationRes location = commonService.getLocation(createReq.getPosition());
         List<String> urlList = commonService.uploadAllImages(createReq.getImages(), FilePathEnum.PLACE_IMAGE);
@@ -154,7 +154,7 @@ public class PlaceServiceImpl extends ServiceImpl<PlaceMapper, Place> implements
                 );
                 update(Wrappers.lambdaUpdate(Place.class)
                         .eq(Place::getId, pointReq.getPlaceId())
-                        .setSql("point = (point + {0}) / {1}", pointReq.getPoint(), count)
+                        .setSql("point = (point * ({1} - 1) + {0}) / {1}", pointReq.getPoint(), count)
                 );
                 return Boolean.TRUE;
             });

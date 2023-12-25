@@ -255,6 +255,11 @@ public class PageServiceImpl implements PageService {
                     .point(place.getPoint())
                     .name(place.getName())
                     .build();
+            // 装配位置
+            if (null != place.getPosition()) {
+                LocationRes location = commonService.getLocation(place.getPosition());
+                placePageGymVo.setFormattedAddress(location.getFormattedAddress());
+            }
             gyms.add(placePageGymVo);
         }
         return PlacePageVo.builder()

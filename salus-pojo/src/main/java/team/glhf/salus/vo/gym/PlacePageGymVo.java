@@ -25,6 +25,8 @@ public class PlacePageGymVo implements Serializable {
 
     private Double point;
 
+    private String formattedAddress;
+
     private Integer comments;
 
     private Double distance;
